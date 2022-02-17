@@ -22,10 +22,11 @@ public class CharacterActions : MonoBehaviour
             animator.SetTrigger("ShakeHands");
             ikPosition.position = targetPosition.position;
         }
+
         if (Input.GetKeyDown(KeyCode.V) && targetPosition != null)
         {
             animator.SetTrigger("PickUp");
-            ikPosition.position = coin.position+new Vector3(0,0.1f,0);
+            ikPosition.position = coin.position;
         }
     }
 

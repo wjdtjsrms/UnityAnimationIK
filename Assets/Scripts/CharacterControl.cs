@@ -25,7 +25,6 @@ public class CharacterControl : MonoBehaviour
 		float _hor = Input.GetAxis("Horizontal");
 		float _ver = Input.GetAxis("Vertical");
 		_inputVector = (new Vector3(_hor, 0f, _ver));
-
 	}
 
 	private void FixedUpdate()
@@ -63,7 +62,6 @@ public class CharacterControl : MonoBehaviour
 		}
 		else
 		{
-			//stops the animation when the character reaches the border of the NavMesh (even if input is still on)
 			_animator.SetBool("IsMoving", false);
 		}
 
