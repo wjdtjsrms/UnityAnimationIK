@@ -57,6 +57,8 @@ public class SubjectProvider<T> : IStateSubject<T>, IDisposable where T : System
 
     public void Dispose()
     {
+        foreach (var observer in stateObservers.ToArray())
+            RemoveObserver(observer);
         stateObservers.Clear();
     }
     #endregion

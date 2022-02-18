@@ -5,17 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : SingletonGameObject<UIManager>
 {
-    [SerializeField] private Button _chagneCoinPosition;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach(var child in transform.GetComponentsInChildren<UIBase>())
+        {
+            child.Init();
+        }
     }
 }

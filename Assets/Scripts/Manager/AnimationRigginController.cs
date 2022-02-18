@@ -7,18 +7,11 @@ public enum ExampleState { Handshake, PickUp, FootIK }
 
 public class AnimationRigginController : SingletonGameObject<AnimationRigginController>
 {
+    [SerializeField] private CharacterActions _playerCharacterAction;
+    [SerializeField] private CharacterActions _testPlayerCharacterAction;
     [SerializeField] public ExampleState _state;
+
     public SubjectProvider<ExampleState> _SubjectProvider { get; private set; } = new SubjectProvider<ExampleState>();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CharacterActions _PlayerAction => _playerCharacterAction;
+    public CharacterActions _TestPlayerAction => _testPlayerCharacterAction;
 }

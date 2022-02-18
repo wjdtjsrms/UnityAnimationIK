@@ -51,6 +51,7 @@ public class PlayerObject : MonoBehaviour, IStateObserver<ExampleState>
 
     private void ResetValue()
     {
+        transform.localScale = Vector3.one;
         _leftFootIK.position = new Vector3(_leftFootIK.position.x, FOOTIKYVALUE, _leftFootIK.position.z);
         _rightFootIK.position = new Vector3(_rightFootIK.position.x, FOOTIKYVALUE, _rightFootIK.position.z);
         _animator.SetBool("IsMoving", false);

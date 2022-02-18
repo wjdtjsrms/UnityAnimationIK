@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class CharacterActions : MonoBehaviour
 {
-	private Animator animator;
+    [SerializeField] private Transform _chestTransform;
+    [SerializeField] private Transform _leftFootIKTransform;
+    [SerializeField] private Transform _rightFootIKTransform;
+    private Animator animator;
+
 	public Transform targetPosition;
     public Transform coin;
 	public Transform ikPosition;
 
+    public Transform CharacterChest => _chestTransform;
+    public Transform LeftFootIK => _leftFootIKTransform;
+    public Transform RightFootIK => _rightFootIKTransform;
 
     void Start()
     {
@@ -30,15 +37,18 @@ public class CharacterActions : MonoBehaviour
         }
     }
 
-	public void DisappearCoin()
-	{
-		if(targetPosition != null)
-			targetPosition.gameObject.SetActive(false);
-	}
+    public void DoShakeHands(Vector3 target)
+    {
+        animator.SetTrigger("ShakeHands");
+        targetPosition.position = target;
+        targetPosition.localPosition = new Vector3(targetPosition.localPosition.x+0.05f, targetPosition.localPosition.y, targetPosition.localPosition.z);
 
-	public void CoinAppear()
-	{
-		if(targetPosition != null)
-			targetPosition.gameObject.SetActive(true);
-	}
+        ikPosition.position = targetPosition.position;
+    }
+
+    public void DoPicKUp()
+    {
+        animator.SetTrigger("PickUp");
+        ikPosition.position = coin.position;
+    }
 }
